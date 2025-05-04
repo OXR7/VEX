@@ -14,7 +14,7 @@ module.exports = {
 
                 const response = await axios.get(`https://data.solanatracker.io/tokens/${word}`, {
                     headers: {
-                        'x-api-key': '21a26f5e-43d1-4858-ba7a-8a9da1390bd5'
+                        'x-api-key': `${process.env.apiKey}`
                     }
                 });
                 const data = response.data;
