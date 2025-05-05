@@ -10,7 +10,7 @@ module.exports = {
         client.user.setActivity('with solamis', { type: ActivityType.Playing });
 
         const ws = new WebSocket('wss://pumpportal.fun/api/data');
-        const wallets = process.env.wallets;
+        const wallets = JSON.parse(process.env.wallets);
 
         ws.on('open', function open() {
             let payload = {
