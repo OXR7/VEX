@@ -42,14 +42,15 @@ module.exports = {
 
                 await new Promise(resolve => setTimeout(resolve, 1000));
 
+                let chart;
                 if (parseInt(id3) < Math.floor(Date.now() / 1000) - 7200) {
-                    const chart = await axios.get(`https://data.solanatracker.io/chart/${id1}?type=5s&time_from=${parseInt(Math.floor(id3 / 1000) - 30)}`, {
+                    chart = await axios.get(`https://data.solanatracker.io/chart/${id1}?type=5s&time_from=${parseInt(Math.floor(id3 / 1000) - 30)}`, {
                         headers: {
                             'x-api-key': `${process.env.apiKey}`
                         }
                     });
                 } else {
-                    const chart = await axios.get(`https://data.solanatracker.io/chart/${id1}?type=1m&time_from=${parseInt(Math.floor(id3 / 1000) - 30)}`, {
+                    chart = await axios.get(`https://data.solanatracker.io/chart/${id1}?type=1m&time_from=${parseInt(Math.floor(id3 / 1000) - 30)}`, {
                         headers: {
                             'x-api-key': `${process.env.apiKey}`
                         }
