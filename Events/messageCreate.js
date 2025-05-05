@@ -45,6 +45,16 @@ module.exports = {
                         .setEmoji('1368151537301590107'),
                 );
 
+                if (message.channel.id === '1368493451192045661' || message.channel.id === '1368972013179502652') {
+                    button.addComponents(
+                        new ButtonBuilder()
+                            .setLabel('PNL')
+                            .setStyle(ButtonStyle.Primary)
+                            .setCustomId(`pnl_${word}_${Math.round(data.pools[0].marketCap.usd)}_${Date.now()}`)
+                            .setEmoji('📊'),
+                    );
+                }
+
                 return message.reply({ content: `**[${data.token.name}](https://pump.fun/coin/${word}) - $${data.token.symbol}**`, embeds: [embed], components: [button] })
             } catch (error) {
                 console.log(error.message);
@@ -52,3 +62,4 @@ module.exports = {
         }
     },
 };
+

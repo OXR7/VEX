@@ -2,13 +2,15 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const fs = require('fs');
 require('dotenv').config();
 
-const client = new Client({ intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildMessageReactions,
-    GatewayIntentBits.MessageContent
-]});
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.MessageContent
+    ]
+});
 client.commands = new Collection();
 
 const functions = fs.readdirSync('./Functions').filter(file => file.endsWith('.js'));
