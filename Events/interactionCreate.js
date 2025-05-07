@@ -20,8 +20,8 @@ module.exports = {
             }
         }
 
-        if (interaction.isButton() && interaction.customId.startsWith('pnl_')) {
-            try {
+        try {
+            if (interaction.isButton() && interaction.customId.startsWith('pnl_')) {
                 await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
                 const [_, id1, id2, id3] = interaction.customId.split('_');
@@ -115,15 +115,15 @@ module.exports = {
                 const attachment = new AttachmentBuilder(buffer, { name: 'pnl.png' });
 
                 return interaction.editReply({ files: [attachment] });
-            } catch (error) {
-                const embed = new EmbedBuilder()
-                    .setColor(0x005086)
-                    .setTitle('Uh oh...')
-                    .setDescription(`We ran into a problem, please try again later!\n\n\`${error}\``)
-                    .setTimestamp();
-
-                return interaction.reply({ embeds: [embed] });
             }
+        } catch (error) {
+            const embed = new EmbedBuilder()
+                .setColor(0x005086)
+                .setTitle('Uh oh...')
+                .setDescription(`We ran into a problem, please try again later!\n\n\`${error}\``)
+                .setTimestamp();
+
+            return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
     },
 };
