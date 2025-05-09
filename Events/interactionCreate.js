@@ -123,7 +123,7 @@ module.exports = {
                 .setDescription(`We ran into a problem, please try again later!\n\n\`${error}\``)
                 .setTimestamp();
 
-            return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            return interaction.editReply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
     },
 };
